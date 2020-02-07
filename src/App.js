@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React,{useEffect} from "react";
+import { BrowserRouter as Route } from "react-router-dom";
 import CharacterList from "./components/CharacterList";
 import WelcomePage from "./components/WelcomePage";
-import Header from "./components/Header.js";
+import Header from "./components/Header";
 import CharacterCard from "./components/CharacterCard";
-import SearchForm from "./components/SearchForm";
 
-export default function App() {
+function App() {
   useEffect(() => {
     console.log("App component mounted.");
     return () => {
@@ -14,11 +13,16 @@ export default function App() {
     };
   }, []);
 
-  return <div className="App">
-<SearchForm/>
-<Header/>
-<CharacterList/>
-<CharacterCard/>
-<WelcomePage/>
-  </div>;
+  return (
+    <div className="App">
+      <Header />
+      <Route exact path="/" component={WelcomePage} />
+      <Route path="/characters" component={CharacterList}/>
+      <WelcomePage/>
+      <CharacterList />
+      <CharacterCard />
+    </div>
+  );
 }
+export default App;
+

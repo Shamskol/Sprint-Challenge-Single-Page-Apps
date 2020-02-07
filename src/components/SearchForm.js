@@ -1,42 +1,49 @@
 import React, { useState } from "react";
-
 import styled from "styled-components";
 
 
 
+ const StyledForm = styled.form`
+   display: flex;
+   flex-direction: row-reverse;
+   justify-content: center;
+   padding: 10px;
+   margin: 0 auto;
+ `;
 
+function SearchForm(props) {
+  const [results, setResults] = useState();
 
+  const changeHandler = event => {
+    setResults(event.target.value);
+  };
 
-export default function SearchForm({onSearch}) {
- const [query, setQuery] = useState({
-name: ""
- })
+  const submitHandler = e => {
+    e.preventDefault();
 
- const handleInputChange = (event) => {
- setQuery({...query, name: event.target.value})
-}
- 
-     // Add a search form here
+    const filteredResults = props.characters.filter(characters => {
+      return characters.name.toLowerCase().includes(results.toLowerCase());
+    });
+    props.search(filteredResults);
+      console.log(filteredResults);
+  };
+
+  return (
     
-     return (
     <section className="search-form">
-      <form onSubmit={() => onSearch(query)}>
+     
+      <form onSubmit={submitHandler}>
         <input
-          onChange={handleInputChange}
-          placeholder="name"
-          value={query.name}
-          name="name"
+          onChange={changeHandler}
+          type="text"
+          placeholder="Search"
+          id="character"
+          name="character"
         />
-        <button type="submit">Search</button>
+        <button type="submit">Submit</button>
       </form>
     </section>
   );
 }
 
-
-
-
-
-
-    
-  
+export default SearchForm;
