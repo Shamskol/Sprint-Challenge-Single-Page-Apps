@@ -1,6 +1,6 @@
 
 import React,{useEffect} from "react";
-import { BrowserRouter as Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CharacterList from "./components/CharacterList";
 import WelcomePage from "./components/WelcomePage";
 import Header from "./components/Header";
@@ -15,14 +15,16 @@ function App() {
   }, []);
 
   return (
+    <BrowserRouter>
     <div className="App">
       <Header />
+      <Switch>
       <Route exact path="/" component={WelcomePage} />
       <Route path="/characters" component={CharacterList}/>
-      <WelcomePage/>
-      <CharacterList />
+      </Switch>
       
     </div>
+    </BrowserRouter>
   );
 }
 export default App;

@@ -32,7 +32,11 @@ export default function CharacterList() {
     <section className="character-list">
       <section className="character-list">
         <div>
-          <SearchForm search={search} character={characters} />
+          <SearchForm 
+          search={search} 
+          character={characters} 
+          updateData={updateData}
+          />
         </div>
         {filterData.map(character => {
           return (

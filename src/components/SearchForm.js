@@ -29,33 +29,39 @@ const StyledForm = styled.form`
 const [results, setResults] = useState();
 
 
-  const changeHandler = event => {
+  const handleChange = event => {
     setResults(event.target.value)
   };
 
   const submitHandler = e => {
     e.preventDefault();
-  
   }
+
+
+
+
   return (
     <section className="search-form">
       <StyledForm>
       <form onSubmit={submitHandler}>
         <input
-          onChange={changeHandler}
+          
           type="text"
           placeholder="Search"
           id="character"
           name="character"
-          
+          onChange={handleChange}
         />
          </form>
+         <Button> <button type="submit">Submit</button></Button>
          </StyledForm>
-        <Button> <button type="submit">Submit</button></Button>
+        
+        
         
    </section>
   )
-};
+  
+  }
 
 
 
@@ -64,5 +70,4 @@ const [results, setResults] = useState();
 
 
 
-
-
+  
