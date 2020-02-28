@@ -1,11 +1,29 @@
-import React from "react";
-import Header from "./components/Header.js";
+
+import React,{useEffect} from "react";
+import { BrowserRouter as Route } from "react-router-dom";
+import CharacterList from "./components/CharacterList";
+import WelcomePage from "./components/WelcomePage";
+import Header from "./components/Header";
 
 
-export default function App() {
+function App() {
+  useEffect(() => {
+    console.log("App component mounted.");
+    return () => {
+      console.log("App component unmounting...");
+    };
+  }, []);
+
   return (
-    <main>
+    <div className="App">
       <Header />
-    </main>
+      <Route exact path="/" component={WelcomePage} />
+      <Route path="/characters" component={CharacterList}/>
+      <WelcomePage/>
+      <CharacterList />
+      
+    </div>
   );
 }
+export default App;
+
