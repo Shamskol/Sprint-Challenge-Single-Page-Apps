@@ -1,9 +1,10 @@
 
 import React,{useEffect} from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import CharacterList from "./components/CharacterList";
 import WelcomePage from "./components/WelcomePage";
 import Header from "./components/Header";
+
 
 
 function App() {
@@ -15,16 +16,22 @@ function App() {
   }, []);
 
   return (
+<div className="App">
+<Header/>
+
     <BrowserRouter>
-    <div className="App">
-      <Header />
+    <Link to= "/"><p>WelcomePage</p> </Link>
+    <Link to="/characters"> <p>CharacterList</p></Link>
+
       <Switch>
       <Route exact path="/" component={WelcomePage} />
       <Route path="/characters" component={CharacterList}/>
       </Switch>
-      
-    </div>
+    
     </BrowserRouter>
+    {/* <CharacterList/> */}
+    
+    </div>
   );
 }
 export default App;
